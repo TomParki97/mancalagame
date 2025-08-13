@@ -1,35 +1,32 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: "pages"
   cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Just publish whatever is in / (for now our stub index.html)
-      - name: Make dist folder
-        run: |
-          mkdir -p dist
-          cp index.html dist/
-          touch dist/.nojekyll
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Assert dist exists
+        run: test -d dist || (echo "::error::dist/ missing (build failed)"; exit 1)
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
           if-no-files-found: error
-
   deploy:
     needs: build
     runs-on: ubuntu-latest

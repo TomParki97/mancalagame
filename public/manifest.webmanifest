@@ -1,0 +1,13 @@
+{
+  "name": "Mancala",
+  "short_name": "Mancala",
+  "start_url": "/mancalagame/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/mancalagame/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

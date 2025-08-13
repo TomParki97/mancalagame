@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      var base='/mancalagame/';
+      if(location.pathname !== base){
+        var path = location.pathname.replace(base,'');
+        var dest = base + (path ? '#' + path : '');
+        location.replace(dest);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
