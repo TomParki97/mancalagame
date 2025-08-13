@@ -1,5 +1,14 @@
-<!doctype html>
-<meta charset="utf-8">
-<title>mancalagame — wiring OK</title>
-<h1>mancalagame — deployment wiring OK</h1>
-<p>If you see this at /mancalagame/ your GitHub Pages is set up.</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="${import.meta.env.BASE_URL}favicon.svg" />
+    <link rel="manifest" href="${import.meta.env.BASE_URL}manifest.webmanifest" />
+    <title>Mancala</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="${import.meta.env.BASE_URL}src/main.tsx"></script>
+  </body>
+</html>
