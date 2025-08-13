@@ -2,13 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>404</title>
     <script>
-      var base='/mancalagame/';
-      if(location.pathname !== base){
-        var path = location.pathname.replace(base,'');
-        var dest = base + (path ? '#' + path : '');
-        location.replace(dest);
-      }
+      (function () {
+        // SPA fallback for GitHub Pages under /mancalagame/
+        var base = '/mancalagame/';
+        if (!location.pathname.startsWith(base)) {
+          location.replace(base);
+          return;
+        }
+        if (location.pathname !== base) {
+          var extra = location.pathname.slice(base.length);
+          var q = location.search || '';
+          var h = location.hash || '';
+          location.replace(base + '#' + extra + q + h);
+        }
+      })();
     </script>
   </head>
   <body></body>
